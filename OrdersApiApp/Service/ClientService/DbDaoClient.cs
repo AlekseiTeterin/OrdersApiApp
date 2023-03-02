@@ -2,6 +2,7 @@
 using OrdersApiApp.Model;
 using OrdersApiApp.Model.Entity;
 using OrdersApiApp.Service.GeneralService;
+using System;
 
 namespace OrdersApiApp.Service.ClientService
 {
@@ -17,6 +18,11 @@ namespace OrdersApiApp.Service.ClientService
             return await _context.EntityClient.ToListAsync();
         }
 
+        public async Task<Client> GetById(int id)
+        {
+            return await _context.EntityClient.SingleOrDefaultAsync(p => p.Id == id);
+        }
+
         public async Task<Client> Add(Client client)
         {
             await _context.AddAsync(client);
@@ -24,26 +30,22 @@ namespace OrdersApiApp.Service.ClientService
             return client;  
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            Client? client = await _context.EntityClient.FindAsync(id);
+            _context.EntityClient.Remove(client!);
+
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        
-
-        public Task<Client> GetById(int id)
+        public async Task<bool> Update(Client client)
         {
-            throw new NotImplementedException();
-        }
+            var currentClient = await _context.EntityClient.FindAsync(client.Id);
+            currentClient!.Name = client.Name;
 
-        public Task<Client> GetClientById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Client> Update(Client client)
-        {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

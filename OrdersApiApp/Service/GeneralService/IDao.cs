@@ -8,7 +8,7 @@ namespace OrdersApiApp.Service.GeneralService
         Task<List<T>> GetAll();
         Task<T> GetById(int id);
         Task<T> Add(T instance);
-        Task<T> Update(T instance);
+        Task<bool> Update(T instance);
         Task<bool> Delete(int id);
     }
 }
