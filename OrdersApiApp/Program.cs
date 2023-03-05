@@ -19,22 +19,18 @@ app.MapGet("/client/all", async (HttpContext context, IDao<Client> dao) =>
 {
     return await dao.GetAll();
 });
-
 app.MapGet("/client/get", async (HttpContext context, int id, IDao<Client> dao) =>
 {
     return await dao.GetById(id);
 });
-
 app.MapPost("/client/add", async (HttpContext context, Client client, IDao<Client> dao) =>
 {
     return await dao.Add(client);
 });
-
 app.MapPost("/client/delete", async (HttpContext context, int id, IDao<Client> dao) =>
 {
     return await dao.Delete(id);
 });
-
 app.MapPost("/client/update", async (HttpContext context, IDao<Client> dao, Client client) =>
 {
     return await dao.Update(client);
