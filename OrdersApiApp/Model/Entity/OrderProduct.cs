@@ -8,8 +8,8 @@
 
         public int ProductQuantity { get; set; } // количество товара
         //навигационные свойства
-        public Product Product { get; set; } // объект товара, на которого ссылается заказ
-        public Order Order { get; set; } // объект заказа, на которого ссылается заказ
+        public Product? Product { get; set; } // объект товара, на которого ссылается заказ
+        public Order? Order { get; set; } // объект заказа, на которого ссылается заказ
 
         public OrderProduct()
         {

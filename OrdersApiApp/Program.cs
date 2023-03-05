@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddTransient<IDao<Client>, DbDaoClient>();
+builder.Services.AddTransient<IDao<Order>, DbDaoOrder>();
 
 var app = builder.Build();
 
@@ -40,4 +41,25 @@ app.MapPost("/client/update", async (HttpContext context, IDao<Client> dao, Clie
 });
 
 
+// тестирование операций с таблицей заказа
+app.MapGet("/order/all", async (HttpContext context, IDao<Order> dao) =>
+{
+    return await dao.GetAll();
+});
+app.MapGet("/order/get", async (HttpContext context, int id, IDao<Order> dao) =>
+{
+    return await dao.GetById(id);
+});
+app.MapPost("/order/add", async (HttpContext context, Order order, IDao<Order> dao) =>
+{
+    return await dao.Add(order);
+});
+app.MapPost("/order/delete", async (HttpContext context, int id, IDao<Order> dao) =>
+{
+    return await dao.Delete(id);
+});
+app.MapPost("/order/update", async (HttpContext context, IDao<Order> dao, Order order) =>
+{
+    return await dao.Update(order);
+});
 app.Run();

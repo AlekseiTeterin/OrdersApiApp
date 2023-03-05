@@ -21,7 +21,9 @@ namespace OrdersApiApp.Service.ClientService
 
         public async Task<Order> GetById(int id)
         {
-            return await _context.EntityOrder.SingleOrDefaultAsync(p => p.Id == id);
+            _context.EntityClient.Load();
+            Order? order = await _context.EntityOrder.SingleOrDefaultAsync(p => p.Id == id);
+            return order!;
         }
 
         public async Task<Order> Add(Order order)
