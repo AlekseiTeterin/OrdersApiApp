@@ -1,4 +1,4 @@
-using OrdersApiApp.Model;
+п»їusing OrdersApiApp.Model;
 using OrdersApiApp.Model.Entity;
 using OrdersApiApp.Service.ClientService;
 using OrdersApiApp.Service.GeneralService;
@@ -14,7 +14,7 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-// тестирование операций с таблицей клиента
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С†РёР№ СЃ С‚Р°Р±Р»РёС†РµР№ РєР»РёРµРЅС‚Р°
 app.MapGet("/client/all", async (HttpContext context, IDao<Client> dao) =>
 {
     return await dao.GetAll();
@@ -37,7 +37,7 @@ app.MapPost("/client/update", async (HttpContext context, IDao<Client> dao, Clie
 });
 
 
-// тестирование операций с таблицей заказа
+// С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ РѕРїРµСЂР°С†РёР№ СЃ С‚Р°Р±Р»РёС†РµР№ Р·Р°РєР°Р·Р°
 app.MapGet("/order/all", async (HttpContext context, IDao<Order> dao) =>
 {
     return await dao.GetAll();
