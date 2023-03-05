@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace OrdersApiApp.Model.Entity
 {
@@ -9,7 +10,7 @@ namespace OrdersApiApp.Model.Entity
         public int ClientId { get; set; } // внешний ключ на клиента
         //навигационные свойства
         public Client? Client { get; set; } // объект клиента, на которого ссылается заказ
-
+        [JsonIgnore]
         public ICollection<OrderProduct>? OrdersProducts { get; set; }
 
         public Order()

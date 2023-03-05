@@ -9,6 +9,7 @@ namespace OrdersApiApp.Model
         public DbSet<Client> EntityClient { get; set; }
         public DbSet<Order> EntityOrder { get; set; }
         public DbSet<Product> EntityProduct { get; set; }
+        public DbSet<OrderProduct> EntityOrderProduct { get; set; }
 
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

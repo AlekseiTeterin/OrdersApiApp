@@ -9,6 +9,7 @@ builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddTransient<IDao<Client>, DbDaoClient>();
 builder.Services.AddTransient<IDao<Order>, DbDaoOrder>();
 builder.Services.AddTransient<IDao<Product>, DbDaoProduct>();
+builder.Services.AddTransient<IDao<OrderProduct>, DbDaoOrderProduct>();
 
 var app = builder.Build();
 
@@ -60,7 +61,7 @@ app.MapPost("/order/update", async (HttpContext context, IDao<Order> dao, Order 
     return await dao.Update(order);
 });
 
-// тестирование операций с таблицей продуктов
+// тестирование операций с таблицей продукта
 app.MapGet("/product/all", async (HttpContext context, IDao<Product> dao) =>
 {
     return await dao.GetAll();
@@ -80,6 +81,28 @@ app.MapPost("/product/delete", async (HttpContext context, int id, IDao<Product>
 app.MapPost("/product/update", async (HttpContext context, IDao<Product> dao, Product product) =>
 {
     return await dao.Update(product);
+});
+
+// тестирование операций с таблицей заказ-товар
+app.MapGet("/order_product/all", async (HttpContext context, IDao<OrderProduct> dao) =>
+{
+    return await dao.GetAll();
+});
+app.MapGet("/order_product/get", async (HttpContext context, int id, IDao<OrderProduct> dao) =>
+{
+    return await dao.GetById(id);
+});
+app.MapPost("/order_product/add", async (HttpContext context, OrderProduct orderProduct, IDao<OrderProduct> dao) =>
+{
+    return await dao.Add(orderProduct);
+});
+app.MapPost("/order_product/delete", async (HttpContext context, int id, IDao<OrderProduct> dao) =>
+{
+    return await dao.Delete(id);
+});
+app.MapPost("/order_product/update", async (HttpContext context, IDao<OrderProduct> dao, OrderProduct orderProduct) =>
+{
+    return await dao.Update(orderProduct);
 });
 
 
