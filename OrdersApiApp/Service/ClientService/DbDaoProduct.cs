@@ -44,6 +44,7 @@ namespace OrdersApiApp.Service.ClientService
         {
             var currentProduct = await _context.EntityProduct.FindAsync(product.Id);
             currentProduct!.ProductName = product.ProductName;
+            currentProduct!.ProductPrice = product.ProductPrice;
             currentProduct!.ItemNumber = product.ItemNumber;
 
             await _context.SaveChangesAsync();
