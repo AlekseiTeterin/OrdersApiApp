@@ -34,13 +34,13 @@ namespace OrdersApiApp.Service.AdditionalServices
             // Общее количество товаров в заказе
             int productCounter = 0;
 
-            orderInfo.Add($"Описание заказа: {order.Description}");
+            orderInfo.Add($"Описание заказа: [{order.Description}]");
 
             foreach (var product in orderProducts)
             {
                 orderInfo.Add(
-                    $"Наименование товара: {product.Product?.ProductName} | " +
-                    $"Количество: {product.ProductQuantity} шт."
+                    $"Наименование товара: /{product.Product?.ProductName}/ | " +
+                    $"Количество: /{product.ProductQuantity} шт./"
                 );
                 productCounter += product.ProductQuantity;
             }
