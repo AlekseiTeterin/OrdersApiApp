@@ -21,7 +21,9 @@ namespace OrdersApiApp.Model
                 .Build();
             // устанавливаем для контекста строку подключения
             // инициализируем саму строку подключения
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            string useConnection = configuration.GetSection("UseConnectionString").Value;
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString(useConnection));
+            
         }
     }
 }
