@@ -1,15 +1,20 @@
 ﻿using OrdersApiApp.Model;
 using OrdersApiApp.Model.Entity;
+using OrdersApiApp.Service.AdditionalInterfaces;
+using OrdersApiApp.Service.AdditionalServices;
 using OrdersApiApp.Service.ClientService;
 using OrdersApiApp.Service.GeneralService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>();
+
 builder.Services.AddTransient<IDao<Client>, DbDaoClient>();
 builder.Services.AddTransient<IDao<Order>, DbDaoOrder>();
 builder.Services.AddTransient<IDao<Product>, DbDaoProduct>();
 builder.Services.AddTransient<IDao<OrderProduct>, DbDaoOrderProduct>();
+
+builder.Services.AddTransient<IDaoOrderInfo, DaoOrderInfo>();
 
 var app = builder.Build();
 
@@ -105,5 +110,9 @@ app.MapPost("/order_product/update", async (HttpContext context, IDao<OrderProdu
     return await dao.Update(orderProduct);
 });
 
-
+//тестирование запроса на получение информации о товаре
+app.MapGet("order/info", async (HttpContext context, IDaoOrderInfo dao, int id) =>
+{
+    return await dao.GetOrderInfo(id);
+});
 app.Run();
