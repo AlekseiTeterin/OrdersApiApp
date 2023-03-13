@@ -20,7 +20,8 @@ namespace OrdersApiApp.Service.ClientService
 
         public async Task<Client> GetById(int id)
         {
-            return await _context.EntityClient.SingleOrDefaultAsync(p => p.Id == id);
+            Client? client = await _context.EntityClient.SingleOrDefaultAsync(p => p.Id == id);
+            return client!;
         }
 
         public async Task<Client> Add(Client client)
