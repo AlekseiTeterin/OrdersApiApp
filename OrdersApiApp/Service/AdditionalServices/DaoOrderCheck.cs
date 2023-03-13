@@ -42,7 +42,7 @@ namespace OrdersApiApp.Service.AdditionalServices
                 check.Add(
                     $"Товар: {product.Product?.ProductName} | " +
                     $"{product.ProductQuantity} шт. | " +
-                    $"Цена: {product.Product?.ProductPrice} р."
+                    $"Цена: {product.Product?.ProductPrice} руб./ед."
                 );
                 totalSum += product.ProductQuantity * product.Product!.ProductPrice;
             }
