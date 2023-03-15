@@ -35,7 +35,7 @@ namespace OrdersApiApp.Service.AdditionalServices
             // Общая сумма заказа
             decimal totalSum = 0;
 
-            check.Add($"Описание заказа: [{order.Description}]");
+            check.Add($"Описание заказа: {order.Description}");
 
             foreach (var product in orderProducts)
             {
