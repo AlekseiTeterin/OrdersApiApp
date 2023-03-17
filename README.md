@@ -24,14 +24,16 @@ CRUD - create read update delete
 ## https://ordersapiapp-lyaksey777.amvera.io
 
 тестирование операций с таблицей клиента
-- /client/all (/get, /add, /delete, /update)
+     /client/all (/get, /add, /delete, /update)
 тестирование операций с таблицей заказа
-- /order/all (/get, /add, /delete, /update)
+     /order/all (/get, /add, /delete, /update)
 тестирование операций с таблицей продукта
-- /product/all (/get, /add, /delete, /update)
+     /product/all (/get, /add, /delete, /update)
 тестирование операций с таблицей заказ-товар
-- /order_product/all (/get, /add, /delete, /update)
+     /order_product/all (/get, /add, /delete, /update)
 
-тестирование запроса на получение информации о товаре /order/info
-тестирование запроса на получение чека с заказом /order/check
+тестирование запроса на получение информации о товаре 
+     /order/info
+тестирование запроса на получение чека с заказом
+     /order/check
 
