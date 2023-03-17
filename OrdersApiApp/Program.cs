@@ -112,7 +112,7 @@ app.MapPost("/order_product/update", async (HttpContext context, IDao<OrderProdu
 });
 
 //тестирование запроса на получение информации о товаре
-app.MapGet("order/info", async (HttpContext context, IDaoOrderInfo dao, int id) =>
+app.MapGet("/order/info", async (HttpContext context, IDaoOrderInfo dao, int id) =>
 {
     return await dao.GetOrderInfo(id);
 });
