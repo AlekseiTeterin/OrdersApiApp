@@ -117,9 +117,9 @@ app.MapGet("order/info", async (HttpContext context, IDaoOrderInfo dao, int id) 
     return await dao.GetOrderInfo(id);
 });
 //тестирование запроса на получение чека с заказом
-app.MapGet("/order/check", async (HttpContext context, IDaoOrderCheck dao, int id) =>
+app.MapGet("/order/check", (HttpContext context, IDaoOrderCheck dao, int id) =>
 {
-    return await dao.GetOrderCheck(id);
+    return dao.GetOrderCheck(id).ToString();
 });
 
 app.Run();
