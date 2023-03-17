@@ -1,0 +1,3 @@
+#подсказка амвере, где лежит докерфайл
+build:
+  dockerfile: ./OrdersApiApp/Dockerfile
