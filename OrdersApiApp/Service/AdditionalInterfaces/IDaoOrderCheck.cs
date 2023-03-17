@@ -1,7 +1,9 @@
-﻿namespace OrdersApiApp.Service.AdditionalInterfaces
+﻿using OrdersApiApp.Model;
+
+namespace OrdersApiApp.Service.AdditionalInterfaces
 {
     public interface IDaoOrderCheck
     {
-        Task<IResult> GetOrderCheck(int  orderId);
+        Check GetOrderCheck(int  orderId);
     }
 }
