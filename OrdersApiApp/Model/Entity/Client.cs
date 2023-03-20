@@ -16,7 +16,7 @@ namespace OrdersApiApp.Model.Entity
             Name = "";
         }
 
-        public Client(int id, string name)
+        public Client(int id, string name, string pswrd)
         {
             Id = id;
             Name = name;

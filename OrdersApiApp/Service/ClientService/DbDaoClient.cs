@@ -44,6 +44,7 @@ namespace OrdersApiApp.Service.ClientService
         {
             var currentClient = await _context.EntityClient.FindAsync(client.Id);
             currentClient!.Name = client.Name;
+            
 
             await _context.SaveChangesAsync();
             return true;
